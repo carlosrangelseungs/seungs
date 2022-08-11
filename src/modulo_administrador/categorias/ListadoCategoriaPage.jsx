@@ -65,7 +65,7 @@ let contador=1;
         
       <Mnav/>
       
-        <div className="main-panel">
+        
 	<div className="main-panel">
       <div className="content-wrapper">
          <div className="row">
@@ -115,7 +115,7 @@ let contador=1;
                 </div>
              </div>
           </div>
-          </div>
+          
     </div>
 	 <Mfooter/>  
           </div>     

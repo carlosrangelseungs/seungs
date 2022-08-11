@@ -1,8 +1,13 @@
 import React,{useState,useEffect}from 'react'
-import {Link} from 'react-router-dom'
-import {collection,getDocs,getDoc,deleteDoc,doc}from 'firebase/firestore'
+import {Link}      from 'react-router-dom'
+import {collection,
+        getDocs,
+		getDoc,
+		deleteDoc,
+		doc} from 'firebase/firestore'
 import {db} from '../../firebaseConfig/conexion_firebase'
-import Swal from 'sweetalert2'
+import DataTable from 'react-data-table-component'
+import Swal  from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Mheader          from '../Mheader'
 import Mnav             from '../Mnav'
@@ -13,7 +18,9 @@ const MySwal = withReactContent(Swal)
 const ListadoEmpresas  = () => {
 
 ///1.configuramos los hooks
+  const [search,setSearch ]=useState([])
   const [empre,setEmpresas ]=useState([])
+  const [filtereCountries,setfiltereCountries]=useState([])
 //2. referencia a la bd
   const  empresaCollection=collection(db,"empresas")
 //3. mostrar todos los documentos
@@ -21,6 +28,9 @@ const ListadoEmpresas  = () => {
   const data=await getDocs(empresaCollection)
    //console.log(data.docs)
    setEmpresas(
+       data.docs.map( (doc) => ( {...doc.data(),id:doc.id}))
+   )
+   setfiltereCountries(
        data.docs.map( (doc) => ( {...doc.data(),id:doc.id}))
    )
      }//fin del getcategoria
@@ -52,97 +62,110 @@ const ListadoEmpresas  = () => {
       }
     })    
   }
+  const columns= [
+  
+  {
+	name:"Codigo ",
+	selector:(row)=>row.codigo_empresa,
+	sortable:true
+	
+  },
+  
+  {
+	name:"Empresa",
+	selector:(row)=>row.nombre_empresa
+  },
+  
+  {
+	name:"Correo",
+	selector:(row)=>row.correo_empresa
+  },
+  
+  {
+	name:"Dirección",
+	selector:(row)=>row.direccion_empresa
+  },
+  
+  {
+	name:"Telefono",
+	selector:(row)=>row.telefono_empresa
+  },
+  
+  {
+	name:"Dni",
+	selector:(row)=>row.dni
+  },
+  
+  {
+	name:"Profesión Empresa",
+	selector:(row)=>row.profecion_empresa
+  },
+  
+  {
+	name:"Modificar",
+	cell:(row)=><Link to={`/Editempresa/${row.id}`} className="btn btn-light">Editar</Link>
+  },
+   {
+	name:"Eliminar",
+	cell:(row)=><button onClick={ () => { confirmDelete(row.id) } } className="btn btn-danger">Eliminar</button>
+  }
+  
+  ]
   //6 - usamos useEffect
   useEffect( () => {
     getEmpresas()
     // eslint-disable-next-line
   }, [] )
+  
+    useEffect( () => {
+    const result=empre.filter((country)=>{
+	  return country.nombre_empresa.toLowerCase().match(search.toLowerCase())
+	})
+	setfiltereCountries(result)
+    // eslint-disable-next-line
+  }, [search] )
   return (
-     <>
+  <>
   <div className="container-scroller">
-    <Mheader/>
+       <Mheader/>
 	<div  className="container-fluid page-body-wrapper">
-        
-      <Mnav/>
-        <div className="main-panel">
-	<div className="main-panel">
-      <div className="content-wrapper">
-         <div className="row">
-            <div className="col-lg-12 grid-margin stretch-card">
-               <div className="card">
-                  <div className="card-body">
-                     <h4 className="card-title">Listado de Categorias</h4>
-                     <div className="table-responsive pt-3">
-                        <div className="d-grid gap-2">
-                          <Link to="/Registrarempresa" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    
-                        </div>
-					 <table className="table table-bordered">
-                         <thead>
-                                <tr>
-                                <th>
-                                    Nr
-                                </th>
-                                <th>
-                                   Codigo 
-                                </th>
-								 <th>
-                                   Empresas
-                                </th>
-								 <th>
-                                  Correo 
-                                </th>
-								 <th>
-                                  Dirección 
-                                </th>
-								<th>
-                                  Telefono
-                                </th>
-								<th>
-                                  Dni
-                                </th>
-								<th>
-                                  Profesión Empresa
-                                </th>
-                                <th colSpan={2}>
-                                   Elija una Opción
-                                </th>
-                                </tr>
-                         </thead>
-                       
-					    <tbody>
-                         
-						 { empre.map( (empresa) => (
-                            <tr key={empresa.id}>
-							   <td>{}</td>
-							   <td>{empresa.codigo_empresa}</td>
-                               <td>{empresa.nombre_empresa}</td>
-							   <td>{empresa.correo_empresa}</td>
-							   <td>{empresa.direccion_empresa}</td>
-							   <td>{empresa.telefono_empresa}</td>
-							   <td>{empresa.dni}</td>
-							   <td>{empresa.profecion_empresa}</td>
-							   <td><Link to={`/Editempresa/${empresa.id}`} className="btn btn-light">Editar</Link></td>
-							   <td><button onClick={ () => { confirmDelete(empresa.id) } } className="btn btn-danger">Eliminar</button></td>
-                            </tr>                
-                          ) ) }
-						    
-						  
-						  
-                         </tbody>
-						
-                        </table>   
-                     </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          </div>
-    </div>
-	 <Mfooter/>  
-          </div>     
-      </div>
-    </div>
-	 </>
+       <Mnav/>
+	   <div className="main-panel">
+	     <div className="content-wrapper">
+		  <div className="row">
+		    <div className="col-lg-12 grid-margin stretch-card">
+			  <div className="card">
+			    <div className="card-body">
+				<DataTable 
+				columns={columns} 
+				data={filtereCountries} 
+				fixedHeader 
+				pagination
+				fixedHeaderScrollHeight="450px"
+				selecttablesRow
+				selecttablesRowHighlight
+				actions={<Link to="/Registrarempresa" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
+				highlightOnHover
+				subHeader
+				subHeaderComponent={<input 
+				                    type="text" 
+									placeholder="Buscar Empresas ..." 
+									className="w25 form-control" 
+									value={search}
+									onChange={(e)=>setSearch(e.target.value)}/>
+									}
+				/>
+		          
+		       </div>
+              </div>		 
+		     </div>
+		   </div>
+		    <Mfooter/> 
+		  </div>
+	    </div>
+     </div>
+  </div>
+  </>
   )
 }
 
