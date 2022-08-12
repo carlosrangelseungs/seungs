@@ -15,19 +15,19 @@ import Mfooter          from '../Mfooter'
 
 const MySwal = withReactContent(Swal)
 
-const ListadoEmpresas  = () => {
+const ListadoClientes  = () => {
 
 ///1.configuramos los hooks
   const [search,setSearch ]=useState([])
-  const [empre,setEmpresas ]=useState([])
+  const [client,setClientes ]=useState([])
   const [filtereCountries,setfiltereCountries]=useState([])
 //2. referencia a la bd
-  const  empresaCollection=collection(db,"empresas")
+  const  clientesCollection=collection(db,"clientes")
 //3. mostrar todos los documentos
-  const getEmpresas=async ()   => {
-  const data=await getDocs(empresaCollection)
+  const getClientes=async ()   => {
+  const data=await getDocs(clientesCollection)
    //console.log(data.docs)
-   setEmpresas(
+   setClientes(
        data.docs.map( (doc) => ( {...doc.data(),id:doc.id}))
    )
    setfiltereCountries(
@@ -35,15 +35,15 @@ const ListadoEmpresas  = () => {
    )
      }//fin del getcategoria
 //4 - Funcion para eliminar un doc
-  const deleteempresa = async (id) => {
-   const empresaDoc = doc(db, "empresas", id)
-   await deleteDoc(empresaDoc)
-    getEmpresas()
+  const deletecliente = async (id) => {
+  const clientesDoc = doc(db, "clientes", id)
+  await deleteDoc(clientesDoc)
+    getClientes()
   }	 
     //5 - Funcion de confirmacion para Sweet Alert 2
   const confirmDelete = (id) => {
     MySwal.fire({
-      title: '¿Esta Seguro de Eliminar esta Empresa?',
+      title: '¿Esta Seguro de Eliminar este Cliente?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -53,7 +53,7 @@ const ListadoEmpresas  = () => {
     }).then((result) => {
       if (result.isConfirmed) { 
         //llamamos a la fcion para eliminar   
-        deleteempresa(id)               
+        deletecliente(id)               
         Swal.fire(
           'Eliminado!',
           'Registro Eliminado.',
@@ -65,45 +65,40 @@ const ListadoEmpresas  = () => {
   const columns= [
   
   {
-	name:"Codigo ",
-	selector:(row)=>row.codigo_empresa,
+	name:"Nombre Cliente ",
+	selector:(row)=>row.nombre_cliente,
 	sortable:true
 	
   },
   
   {
-	name:"Empresa",
-	selector:(row)=>row.nombre_empresa
+	name:"Apellido Cliente",
+	selector:(row)=>row.apellidos_cliente
   },
   
   {
-	name:"Correo",
-	selector:(row)=>row.correo_empresa
+	name:"Dni Cliente",
+	selector:(row)=>row.dni_cliente
   },
   
   {
-	name:"Dirección",
-	selector:(row)=>row.direccion_empresa
+	name:"Dirección Cliente",
+	selector:(row)=>row.direccion_cliente
   },
   
   {
-	name:"Telefono",
-	selector:(row)=>row.telefono_empresa
+	name:"Telefono Cliente",
+	selector:(row)=>row.telefono_cliente
   },
   
   {
-	name:"Dni",
-	selector:(row)=>row.dni
-  },
-  
-  {
-	name:"Profesión Empresa",
-	selector:(row)=>row.profecion_empresa
+	name:"Correo Cliente",
+	selector:(row)=>row.correo_cliente
   },
   
   {
 	name:"Modificar",
-	cell:(row)=><Link to={`/Editempresa/${row.id}`} className="btn btn-light">Editar</Link>
+	cell:(row)=><Link to={`/Editecliente/${row.id}`} className="btn btn-light">Editar</Link>
   },
    {
 	name:"Eliminar",
@@ -113,13 +108,13 @@ const ListadoEmpresas  = () => {
   ]
   //6 - usamos useEffect
   useEffect( () => {
-    getEmpresas()
+    getClientes()
     // eslint-disable-next-line
   }, [] )
   
     useEffect( () => {
-    const result=empre.filter((country)=>{
-	  return country.nombre_empresa.toLowerCase().match(search.toLowerCase())
+    const result=client.filter((country)=>{
+	  return country.nombre_cliente.toLowerCase().match(search.toLowerCase())
 	})
 	setfiltereCountries(result)
     // eslint-disable-next-line
@@ -136,7 +131,7 @@ const ListadoEmpresas  = () => {
 		    <div className="col-lg-12 grid-margin stretch-card">
 			  <div className="card">
 			    <div className="card-body">
-				<h4 className="card-title">Listado de Empresas</h4>
+				<h4 className="card-title">Listado de Clientes</h4>
 				<DataTable 
 				columns={columns} 
 				data={filtereCountries} 
@@ -145,12 +140,12 @@ const ListadoEmpresas  = () => {
 				fixedHeaderScrollHeight="450px"
 				selecttablesRow
 				selecttablesRowHighlight
-				actions={<Link to="/Registrarempresa" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
+				actions={<Link to="/Registrarcliente" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
 				highlightOnHover
 				subHeader
 				subHeaderComponent={<input 
 				                    type="text" 
-									placeholder="Buscar Empresas ..." 
+									placeholder="Buscar Clientes ..." 
 									className="w25 form-control" 
 									value={search}
 									onChange={(e)=>setSearch(e.target.value)}/>
@@ -170,4 +165,4 @@ const ListadoEmpresas  = () => {
   )
 }
 
-export default ListadoEmpresas
+export default ListadoClientes

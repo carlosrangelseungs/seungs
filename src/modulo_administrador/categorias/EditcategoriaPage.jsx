@@ -48,7 +48,7 @@ const Editcategoria = () => {
             <div className='col-md-6 grid-margin stretch-card'>
              <div className="card">
 			  <div className="card-body">
-			   <h4 className="card-title">Registro Categoria</h4>
+			   <h4 className="card-title">Editar Categoria {nombre_categoria}</h4>
                  <form className="forms-sample"onSubmit={update}>
                     <div className="form-group">
                         <label for="Categoriar">Nombre Categoria</label>

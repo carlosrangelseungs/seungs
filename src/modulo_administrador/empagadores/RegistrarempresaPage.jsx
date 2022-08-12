@@ -1,12 +1,12 @@
-import { useEffect, useState }    from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { getDoc, updateDoc, doc } from "firebase/firestore"
-import {db} from '../../firebaseConfig/conexion_firebase'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../../firebaseConfig/conexion_firebase'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
 
-const Editcategoria = () => {
+const Registrarempresa = () => {
   const [ codigo_empresa,setcodigoempresa ] = useState('')
   const [ nombre_empresa,setNombreempresa ] = useState('')
   const [ direccion_empresa,setDireccionempresa ] = useState('')
@@ -14,46 +14,26 @@ const Editcategoria = () => {
   const [ dni,setDni ] = useState('')
   const [ telefono_empresa,setTelefonoempresa ] = useState('')
   const [ profecion_empresa,setProfecion_empresa ] = useState('')
-    const navigate = useNavigate()    
-    const {id} = useParams()
+  const navigate = useNavigate()
 
-    const update = async (e) => {
-        e.preventDefault()
-        const empresa = doc(db, "empresas", id)
-        const data = { codigo_empresa:codigo_empresa, 
+  const empresaCollection = collection(db, "empresas")
+
+  const store = async (e) => {
+    e.preventDefault()
+    await addDoc( empresaCollection, { codigo_empresa:codigo_empresa, 
 	                                   nombre_empresa:nombre_empresa,
 									   direccion_empresa:direccion_empresa,
 									   correo_empresa:correo_empresa, 
 									   dni:dni,
 									   telefono_empresa:telefono_empresa,
 									   profecion_empresa:profecion_empresa
-					}
-        await updateDoc(empresa, data)
-        //navigate('ListadoCategoria')
-    }
+									   } )
+    //navigate('/')
+    //console.log(e.target[0].value)
+  }
 
-    const getEmpresaById = async (id) => {
-        const empresa = await getDoc( doc(db, "empresas", id) )
-        if(empresa.exists()) {
-            //console.log(product.data())
-            setcodigoempresa(empresa.data().codigo_empresa)    
-            setNombreempresa(empresa.data().nombre_empresa)
-			setDireccionempresa(empresa.data().direccion_empresa)    
-            setCorreoempresa(empresa.data().correo_empresa)
-			setDni(empresa.data().dni)    
-            setTelefonoempresa(empresa.data().telefono_empresa)
-			setProfecion_empresa(empresa.data().profecion_empresa)    
-        }else{
-            console.log('La Empresa no existe')
-        }
-    }
-
-    useEffect( () => {
-        getEmpresaById(id)
-        // eslint-disable-next-line
-    }, [])
-    return (
-         <div className="container-scroller">
+  return (
+  <div className="container-scroller">
        <Mheader/>
       <div  className="container-fluid page-body-wrapper">
         
@@ -64,8 +44,8 @@ const Editcategoria = () => {
             <div className='col-md-6 grid-margin stretch-card'>
              <div className="card">
 			  <div className="card-body">
-			   <h4 className="card-title">Editar Categoria {nombre_empresa}</h4>
-                 <form className="forms-sample"onSubmit={update}>
+			   <h4 className="card-title">Registro Empresas</h4>
+                 <form className="forms-sample"onSubmit={store}>
                     <div className="form-group">
                         <label for="Codigor">Codigo Empresa</label>
                         <input
@@ -141,6 +121,7 @@ const Editcategoria = () => {
 						    placeholder="Profesión Empresa ..."
                         />              
                     </div>
+					
                     <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
                  </form>   
 				</div>
@@ -151,7 +132,7 @@ const Editcategoria = () => {
      </div>
  </div>
     </div> 
-    )
+  )
 }
 
-export default  Editcategoria
+export default Registrarempresa

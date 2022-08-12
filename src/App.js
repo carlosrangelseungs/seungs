@@ -20,8 +20,14 @@ import  ListadoEmpresas      from  './modulo_administrador/empresas/ListadoEmpre
 import  Registrarempresa     from  './modulo_administrador/empresas/RegistrarempresaPage'
 import  Editempresa          from  './modulo_administrador/empresas/EditempresaPage'
 
+import  ListadoClientes      from  './modulo_administrador/clientes/ListadoClientesPage'
+import  Registrarcliente     from  './modulo_administrador/clientes/RegistrarclientePage'
+import  Editecliente         from  './modulo_administrador/clientes/EditeclientePage'
 
 
+import  Listadoplanes        from  './modulo_administrador/planes_seungs/ListadoplanesPage'
+import  Registrarplanes      from  './modulo_administrador/planes_seungs/RegistrarplanesPage'
+import  Editplanes           from  './modulo_administrador/planes_seungs/EditplanesPage'
 
 
 function App() {
@@ -43,6 +49,12 @@ function App() {
 	  <Route path="/ListadoEmpresas/"    element={<ListadoEmpresas />} />
 	  <Route path="/Registrarempresa"    element={<Registrarempresa />} />
 	  <Route path="/Editempresa/:id"     element={<Editempresa />} />
+	  <Route path="/ListadoClientes/"    element={<ListadoClientes />} />
+	  <Route path="/Registrarcliente"    element={<Registrarcliente />} />
+	  <Route path="/Editecliente/:id"    element={<Editecliente />} />
+	  <Route path="/Listadoplanes/"      element={<Listadoplanes  />} />
+	  <Route path="/Registrarplanes"     element={<Registrarplanes />} />
+	  <Route path="/Editplanes/:id"      element={<Editplanes />} />
       <Route path="*"                    element={<NotFoundPage />} />
     </Routes>
   </Router>

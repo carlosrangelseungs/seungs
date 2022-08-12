@@ -136,7 +136,6 @@ const ListadoEmpresas  = () => {
 		    <div className="col-lg-12 grid-margin stretch-card">
 			  <div className="card">
 			    <div className="card-body">
-				<h4 className="card-title">Listado de Empresas</h4>
 				<DataTable 
 				columns={columns} 
 				data={filtereCountries} 

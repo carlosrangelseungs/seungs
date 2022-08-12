@@ -11,19 +11,19 @@ import Mfooter          from '../Mfooter'
 
 const MySwal = withReactContent(Swal)
 
-const ListadoCategoria = () => {
+const Listadoplanes = () => {
 let contador=1;	
 //1.configuramos los hooks
   const [search,setSearch ]=useState([])
-  const [categorias,setCategorias ]=useState([])
+  const [planes,setPlanes ]=useState([])
   const [filtereCountries,setfiltereCountries]=useState([])
 //2. referencia a la bd
-  const  categoriaCollection=collection(db,"categoria_empresa")
+  const  planesCollection=collection(db,"adquision_plan")
 //3. mostrar todos los documentos
-  const getCategorias=async ()   => {
-  const data=await getDocs(categoriaCollection)
+  const getPlanes=async ()   => {
+  const data=await getDocs(planesCollection)
    //console.log(data.docs)
-   setCategorias(
+   setPlanes(
        data.docs.map( (doc) => ( {...doc.data(),id:doc.id}))
    )
    setfiltereCountries(
@@ -31,15 +31,15 @@ let contador=1;
    )
      }//fin del getcategoria
 //4 - Funcion para eliminar un doc
-  const deletecategoria = async (id) => {
-   const categoriaDoc = doc(db, "categoria_empresa", id)
-   await deleteDoc(categoriaDoc)
-    getCategorias()
+   const deleteplanes = async (id) => {
+   const planesDoc = doc(db, "adquision_plan", id)
+   await deleteDoc(planesDoc)
+    getPlanes()
   }
   //5 - Funcion de confirmacion para Sweet Alert 2
   const confirmDelete = (id) => {
     MySwal.fire({
-      title: '¿Esta Seguro de Eliminar esta categoria?',
+      title: '¿Esta Seguro de Eliminar este plan?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -49,7 +49,7 @@ let contador=1;
     }).then((result) => {
       if (result.isConfirmed) { 
         //llamamos a la fcion para eliminar   
-        deletecategoria(id)               
+        deleteplanes(id)               
         Swal.fire(
           'Eliminado!',
           'Registro Eliminado.',
@@ -61,21 +61,28 @@ let contador=1;
   const columns= [
   
   {
-	name:"Nombre Categoria ",
-	selector:(row)=>row.nombre_categoria,
+	name:"Nombre Plan ",
+	selector:(row)=>row.nombre_plan,
+	sortable:true
+	
+  },
+  
+   {
+	name:"Precio Plan ",
+	selector:(row)=>row.precio_plan,
 	sortable:true
 	
   },
   
   {
-	name:"Descripción Categoria",
-	selector:(row)=>row.descripcion_categoria
+	name:"Descripción Plan",
+	selector:(row)=>row.descripcion_plan
   },
   
  
   {
 	name:"Modificar",
-	cell:(row)=><Link to={`/Editcategoria/${row.id}`} className="btn btn-light">Editar</Link>
+	cell:(row)=><Link to={`/Editplanes/${row.id}`} className="btn btn-light">Editar</Link>
   },
    {
 	name:"Eliminar",
@@ -85,13 +92,13 @@ let contador=1;
   ]
 //6 - usamos useEffect
   useEffect( () => {
-    getCategorias()
+    getPlanes()
     // eslint-disable-next-line
   }, [] )
 
   useEffect( () => {
-    const result=categorias.filter((country)=>{
-	  return country.nombre_categoria.toLowerCase().match(search.toLowerCase())
+    const result=planes.filter((country)=>{
+	  return country.nombre_plan.toLowerCase().match(search.toLowerCase())
 	})
 	setfiltereCountries(result)
     // eslint-disable-next-line
@@ -112,7 +119,7 @@ let contador=1;
             <div className="col-lg-12 grid-margin stretch-card">
                <div className="card">
                   <div className="card-body">
-                     <h4 className="card-title">Listado de Categorias</h4>
+                     <h4 className="card-title">Listado de Planes</h4>
                        <DataTable 
 							columns={columns} 
 							data={filtereCountries} 
@@ -121,12 +128,12 @@ let contador=1;
 							fixedHeaderScrollHeight="450px"
 							selecttablesRow
 							selecttablesRowHighlight
-							actions={<Link to="/Registrarcategoria" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
+							actions={<Link to="/Registrarplanes" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
 							highlightOnHover
 							subHeader
 							subHeaderComponent={<input 
 												type="text" 
-												placeholder="Buscar Categoria ..." 
+												placeholder="Buscar Planes ..." 
 												className="w25 form-control" 
 												value={search}
 												onChange={(e)=>setSearch(e.target.value)}/>
@@ -146,4 +153,4 @@ let contador=1;
   )
 }
 
-export default ListadoCategoria
+export default Listadoplanes
