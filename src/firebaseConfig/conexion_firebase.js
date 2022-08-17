@@ -2,9 +2,15 @@
 
 import { initializeApp } from "firebase/app";
 
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics"
 
 import { getFirestore } from 'firebase/firestore'
+
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+
+//import { v4 }   from 'uuid'//genera a id autmaticos
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -43,3 +49,31 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 export const db = getFirestore(app)
+
+export const storage = getStorage();
+
+
+
+export function uploadFile(file)
+{
+	
+  const storageRef = ref(storage)
+  uploadBytes(storageRef, file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+  });
+}
+/*export function uploadFile(file)
+
+{
+	const storageRef=ref(storage,v4())
+	uploadBytes(storageRef,file).then(snapshot=>{console.log(snapshot)})
+}*/
+
+/*export async function uploadFile(file)
+
+{
+	const storageRef=ref(storage,v4())
+    await uploadBytes(storageRef,file)
+	const url=await getDownloadURL(storageRef)
+	return url
+}*/

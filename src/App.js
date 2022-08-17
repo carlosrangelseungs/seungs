@@ -30,6 +30,16 @@ import  Registrarplanes      from  './modulo_administrador/planes_seungs/Registr
 import  Editplanes           from  './modulo_administrador/planes_seungs/EditplanesPage'
 
 
+import  ListadoProducto      from  './modulo_administrador/productos/ListadoProductoPage'
+import  RegistraProducto     from  './modulo_administrador/productos/RegistraProductoPage'
+import  EditcProducto        from  './modulo_administrador/productos/EditcProductoPage'
+
+import  ListadoRepartidores    from  './modulo_administrador/Repartidores/ListadoRepartidoresPage'
+import  RegistrarRepartidores  from  './modulo_administrador/Repartidores/RegistraRepartidoresPage'
+import  EditRepartidores       from  './modulo_administrador/Repartidores/EditRepartidoresPage'
+
+
+
 function App() {
   return (
 
@@ -37,25 +47,31 @@ function App() {
     
     <Routes>
       <Route path="/" element={<Inicio />} />
-      <Route path="/Productos"           element={<Productos />} />
-      <Route path="/Servicios"           element={<Servicios />} />
-      <Route path="/Contacto"            element={<Contacto />} />
-      <Route path="/IniciarSeccion"      element={<IniciarSeccion />} />
-      <Route path="/RegistroUsuario"     element={<RegistroUsuario />} />
-      <Route path="/Moduloadministrador" element={<Moduloadministrador />} />
-	  <Route path="/ListadoCategoria"    element={<ListadoCategoria />} />
-	  <Route path="/Registrarcategoria"  element={<Registrarcategoria />} />
-	  <Route path="/Editcategoria/:id"   element={<Editcategoria />} />
-	  <Route path="/ListadoEmpresas/"    element={<ListadoEmpresas />} />
-	  <Route path="/Registrarempresa"    element={<Registrarempresa />} />
-	  <Route path="/Editempresa/:id"     element={<Editempresa />} />
-	  <Route path="/ListadoClientes/"    element={<ListadoClientes />} />
-	  <Route path="/Registrarcliente"    element={<Registrarcliente />} />
-	  <Route path="/Editecliente/:id"    element={<Editecliente />} />
-	  <Route path="/Listadoplanes/"      element={<Listadoplanes  />} />
-	  <Route path="/Registrarplanes"     element={<Registrarplanes />} />
-	  <Route path="/Editplanes/:id"      element={<Editplanes />} />
-      <Route path="*"                    element={<NotFoundPage />} />
+      <Route path="/Productos"                  element={<Productos />} />
+      <Route path="/Servicios"                  element={<Servicios />} />
+      <Route path="/Contacto"                   element={<Contacto />} />
+      <Route path="/IniciarSeccion"             element={<IniciarSeccion />} />
+      <Route path="/RegistroUsuario"            element={<RegistroUsuario />} />
+      <Route path="/Moduloadministrador"        element={<Moduloadministrador />} />
+	  <Route path="/ListadoCategoria"           element={<ListadoCategoria />} />
+	  <Route path="/Registrarcategoria"         element={<Registrarcategoria />} />
+	  <Route path="/Editcategoria/:id"          element={<Editcategoria />} />
+	  <Route path="/ListadoEmpresas/"           element={<ListadoEmpresas />} />
+	  <Route path="/Registrarempresa"           element={<Registrarempresa />} />
+	  <Route path="/Editempresa/:id"            element={<Editempresa />} />
+	  <Route path="/ListadoClientes/"           element={<ListadoClientes />} />
+	  <Route path="/Registrarcliente"           element={<Registrarcliente />} />
+	  <Route path="/Editecliente/:id"           element={<Editecliente />} />
+	  <Route path="/Listadoplanes/"             element={<Listadoplanes  />} />
+	  <Route path="/Registrarplanes"            element={<Registrarplanes />} />
+	  <Route path="/Editplanes/:id"             element={<Editplanes />} />
+	  <Route path="/ListadoProducto/"           element={<ListadoProducto  />} />
+	  <Route path="/RegistraProducto"           element={<RegistraProducto />} />
+	  <Route path="/EditcProducto/:id"          element={<EditcProducto />} />
+	  <Route path="/ListadoRepartidores/"       element={<ListadoRepartidores />} />
+	  <Route path="/RegistrarRepartidores"      element={<RegistrarRepartidores />} />
+	  <Route path="/EditRepartidores/:id"       element={<EditRepartidores />} />
+      <Route path="*"                           element={<NotFoundPage />} />
     </Routes>
   </Router>
        

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../firebaseConfig/conexion_firebase'
+import { uploadFile } from '../../firebaseConfig/conexion_firebase'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
@@ -9,17 +10,29 @@ import Mfooter    from '../Mfooter'
 const Registrarcategoria = () => {
   const [ nombre_categoria, setNombrecategoria ] = useState('')
   const [ descripcion_categoria, setDescripcioncategoria ] = useState('')
+ // const [ file,setFile]=useState(null);
   const navigate = useNavigate()
 
   const categoriaCollection = collection(db, "categoria_empresa")
 
   const store = async (e) => {
     e.preventDefault()
-    await addDoc( categoriaCollection, { nombre_categoria: nombre_categoria, descripcion_categoria: descripcion_categoria } )
-    //navigate('/')
+	try
+	{
+		//throw new Error("Fallo al subir datos del registo categoria")
+		await addDoc( categoriaCollection, { nombre_categoria: nombre_categoria, descripcion_categoria: descripcion_categoria } )
+		//const result=await uploadFile(file)
+    }catch(error)
+	{
+	   console.log(error)
+	   alert("Fallo interno intente mas tarde")
+	}
+	//navigate('/')
     //console.log(e.target[0].value)
   }
-
+  //subir imagenes
+  
+  
   return (
   <div className="container-scroller">
        <Mheader/>
@@ -52,6 +65,15 @@ const Registrarcategoria = () => {
                             type="text"
                             className='form-control'
 						    placeholder="Descripción Categoria ..."
+                        />              
+                    </div>  
+                    <div className="form-group">
+                        <label className="descripcionr">Subir Imagen</label>
+                        <input
+						 type="file"
+						 
+                         className='form-control'
+						  onChange={(e) =>uploadFile(e.target.files[0])} 
                         />              
                     </div>  
                     <button type='submit' className='btn btn-primary mr-2'>Guardar</button>

@@ -9,6 +9,7 @@ import Mheader          from '../Mheader'
 import Mnav             from '../Mnav'
 import Mfooter          from '../Mfooter'
 
+
 const MySwal = withReactContent(Swal)
 
 const ListadoCategoria = () => {
@@ -121,7 +122,7 @@ let contador=1;
 							fixedHeaderScrollHeight="450px"
 							selecttablesRow
 							selecttablesRowHighlight
-							actions={<Link to="/Registrarcategoria" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
+							actions={<Link to="/Registrarcategoria" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>}
 							highlightOnHover
 							subHeader
 							subHeaderComponent={<input 
@@ -132,7 +133,10 @@ let contador=1;
 												onChange={(e)=>setSearch(e.target.value)}/>
 												}
 							/>
+							
+							
                      </div>
+					 
                    </div>
                 </div>
              </div>
