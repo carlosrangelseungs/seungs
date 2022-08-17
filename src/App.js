@@ -38,6 +38,14 @@ import  ListadoRepartidores    from  './modulo_administrador/Repartidores/Listad
 import  RegistrarRepartidores  from  './modulo_administrador/Repartidores/RegistraRepartidoresPage'
 import  EditRepartidores       from  './modulo_administrador/Repartidores/EditRepartidoresPage'
 
+import  ListadoPedidos         from  './modulo_administrador/pedidos/ListadoPedidosPage'
+import  Editpedidos            from  './modulo_administrador/pedidos/EditpedidosPage'
+import  Registrarpedidos       from  './modulo_administrador/pedidos/RegistrarpedidosPage'
+
+import  Listadousuarios        from  './modulo_administrador/Usuarios/ListadosusuariosPage'
+import  Editusuarios           from  './modulo_administrador/Usuarios/EditusuariosPage'
+import  Registrarusuarios      from  './modulo_administrador/Usuarios/RegistrausuariosPage'
+
 
 
 function App() {
@@ -71,7 +79,13 @@ function App() {
 	  <Route path="/ListadoRepartidores/"       element={<ListadoRepartidores />} />
 	  <Route path="/RegistrarRepartidores"      element={<RegistrarRepartidores />} />
 	  <Route path="/EditRepartidores/:id"       element={<EditRepartidores />} />
-      <Route path="*"                           element={<NotFoundPage />} />
+	  <Route path="/ListadoPedidos/"            element={<ListadoPedidos />} />
+      <Route path="/Registrarpedidos"           element={<Registrarpedidos />} />
+	  <Route path="/Editpedidos/:id"            element={<Editpedidos />} />
+	  <Route path="/Listadousuarios/"           element={<Listadousuarios />} />
+      <Route path="/Registrarusuarios"          element={<Registrarusuarios />} />
+	  <Route path="/Editusuarios/:id"           element={<Editusuarios />} />
+	  <Route path="*"                           element={<NotFoundPage />} />
     </Routes>
   </Router>
        

@@ -2,6 +2,7 @@ import { useEffect, useState }    from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getDoc, updateDoc, doc } from "firebase/firestore"
 import {db} from '../../firebaseConfig/conexion_firebase'
+import {Link}     from 'react-router-dom'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
@@ -64,7 +65,7 @@ const Editcategoria = () => {
             <div className='col-md-6 grid-margin stretch-card'>
              <div className="card">
 			  <div className="card-body">
-			   <h4 className="card-title">Editar Categoria {nombre_empresa}</h4>
+			   <h4 className="card-title">Editar Empresa {nombre_empresa}</h4>
                  <form className="forms-sample"onSubmit={update}>
                     <div className="form-group">
                         <label for="Codigor">Codigo Empresa</label>
@@ -141,7 +142,8 @@ const Editcategoria = () => {
 						    placeholder="Profesión Empresa ..."
                         />              
                     </div>
-                    <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
+                    <button type='submit' className='btn btn-primary mr-2'>Editar {nombre_empresa} </button>
+					<Link class="nav-link" to="/ListadoEmpresas" className='btn btn-primary mr-2'>Atras</Link>
                  </form>   
 				</div>
 			  </div>

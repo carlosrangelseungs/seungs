@@ -2,32 +2,35 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../firebaseConfig/conexion_firebase'
-import {Link}     from 'react-router-dom'
+import {Link}      from 'react-router-dom'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
 
-const Registrarempresa = () => {
-  const [ codigo_empresa,setcodigoempresa ] = useState('')
-  const [ nombre_empresa,setNombreempresa ] = useState('')
-  const [ direccion_empresa,setDireccionempresa ] = useState('')
-  const [ correo_empresa,setCorreoempresa ] = useState('')
-  const [ dni,setDni ] = useState('')
-  const [ telefono_empresa,setTelefonoempresa ] = useState('')
-  const [ profecion_empresa,setProfecion_empresa ] = useState('')
+const Registrarusuarios = () => {
+  const [ nombre_usuario,setcodigoempresa ] = useState('')
+  const [ clave_usuario,setNombreempresa ] = useState('')
+  const [ email,setDireccionempresa ] = useState('')
+  const [ pregunta_usuario,setCorreoempresa ] = useState('')
+  const [ repuesta_usuario,setDni ] = useState('')
+  const [ tipo_usuario,setTelefonoempresa ] = useState('')
+ 
+  
+  
   const navigate = useNavigate()
 
-  const empresaCollection = collection(db, "empresas")
+  const empresaCollection = collection(db, "Usuarios")
 
   const store = async (e) => {
     e.preventDefault()
-    await addDoc( empresaCollection, { codigo_empresa:codigo_empresa, 
-	                                   nombre_empresa:nombre_empresa,
-									   direccion_empresa:direccion_empresa,
-									   correo_empresa:correo_empresa, 
-									   dni:dni,
-									   telefono_empresa:telefono_empresa,
-									   profecion_empresa:profecion_empresa
+    await addDoc( empresaCollection, { 
+	                                   nombre_usuario:nombre_usuario, 
+	                                   clave_usuario:clave_usuario,
+									   email:email,
+									   pregunta_usuario:pregunta_usuario, 
+									   repuesta_usuario:repuesta_usuario,
+									   tipo_usuario:tipo_usuario
+									   
 									   } )
     //navigate('/')
     //console.log(e.target[0].value)
@@ -45,87 +48,78 @@ const Registrarempresa = () => {
             <div className='col-md-6 grid-margin stretch-card'>
              <div className="card">
 			  <div className="card-body">
-			   <h4 className="card-title">Registro Empresa</h4>
+			   <h4 className="card-title">Registro Usuarios</h4>
                  <form className="forms-sample"onSubmit={store}>
                     <div className="form-group">
-                        <label for="Codigor">Codigo Empresa</label>
+                        <label for="Codigor">Nombre Usuario</label>
                         <input
-                            value={codigo_empresa}
+                            value={nombre_usuario}
                             onChange={ (e) => setcodigoempresa(e.target.value)} 
                             type="text"
                             className='form-control'
-						    placeholder="Codigo Empresa ..."
+						    placeholder="Nombre Usuario ..."
                         />
                     </div>  
                     <div className="form-group">
-                        <label className="nombrer">Nombre Empresa</label>
+                        <label className="nombrer">Clave Usuario</label>
                         <input
-                            value={nombre_empresa}
+                            value={clave_usuario}
                             onChange={ (e) => setNombreempresa(e.target.value)} 
-                            type="text"
+                            type="password"
                             className='form-control'
-						    placeholder="Nombre Empresa ..."
+						    placeholder="Clave Usuario ..."
                         />              
                     </div> 
 
                       <div className="form-group">
-                        <label className="direccionr">Dirección Empresa</label>
+                        <label className="direccionr">Correo Electronico</label>
                         <input
-                            value={direccion_empresa}
+                            value={email}
                             onChange={ (e) => setDireccionempresa(e.target.value)} 
                             type="text"
                             className='form-control'
-						    placeholder="Dirección Empresa ..."
+						    placeholder="Correo Electronico ..."
                         />              
                     </div>
 					
 					 <div className="form-group">
-                        <label className="correor">Correo Empresa</label>
+                        <label className="correor">Pregunta Usuario</label>
                         <input
-                            value={correo_empresa}
+                            value={pregunta_usuario}
                             onChange={ (e) => setCorreoempresa(e.target.value)} 
                             type="text"
                             className='form-control'
-						    placeholder="Correo Empresa ..."
+						    placeholder="Pregunta Usuario ..."
                         />              
                     </div>
 					
 				<div className="form-group">
-                        <label className="dnir">Dni</label>
+                        <label className="dnir">Repuesta Usuario</label>
                         <input
-                            value={dni}
+                            value={repuesta_usuario}
                             onChange={ (e) => setDni(e.target.value)} 
                             type="text"
                             className='form-control'
-						    placeholder="Dni Empresa ..."
+						    placeholder="Repuesta Usuario ..."
                         />              
                     </div>
 					
 					<div className="form-group">
-                        <label className="telefonor">Telefono Empresa</label>
+                        <label className="telefonor">Tipo Usuario</label>
                         <input
-                            value={telefono_empresa}
+                            value={tipo_usuario}
                             onChange={ (e) => setTelefonoempresa(e.target.value)} 
                             type="text"
                             className='form-control'
-						    placeholder="Telefono Empresa ..."
+						    placeholder="Tipo Usuario  ..."
                         />              
                     </div>
 					
-					<div className="form-group">
-                        <label className="pr">Profeción Empresa</label>
-                        <input
-                            value={profecion_empresa}
-                            onChange={ (e) => setProfecion_empresa(e.target.value)} 
-                            type="text"
-                            className='form-control'
-						    placeholder="Profesión Empresa ..."
-                        />              
-                    </div>
 					
-                    <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
-					<Link class="nav-link" to="/ListadoEmpresas" className='btn btn-primary mr-2'>Atras</Link>
-                 </form>   
+
+                   <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
+                   <Link class="nav-link" to="/Listadousuarios" className='btn btn-primary mr-2'>Atras</Link>
+				 </form>   
 				</div>
 			  </div>
             </div>
@@ -137,4 +131,7 @@ const Registrarempresa = () => {
   )
 }
 
-export default Registrarempresa
+export default Registrarusuarios
+
+
+

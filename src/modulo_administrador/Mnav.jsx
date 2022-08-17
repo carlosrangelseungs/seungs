@@ -57,6 +57,20 @@ const Mnav = () => {
         </Link>
       </li>
 	  
+	    <li class="nav-item">
+        <Link class="nav-link" to="/ListadoPedidos">
+          <i class="icon-box menu-icon"></i>
+          <span class="menu-title">Modulo Pedidos</span>
+        </Link>
+      </li>
+	  
+	   <li class="nav-item">
+        <Link class="nav-link" to="/Listadousuarios">
+          <i class="icon-box menu-icon"></i>
+          <span class="menu-title">Modulo Usuarios</span>
+        </Link>
+      </li>
+	  
 	  
 	  </ul>
 	</div>

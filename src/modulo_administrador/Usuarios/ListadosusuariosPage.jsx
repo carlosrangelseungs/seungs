@@ -15,14 +15,14 @@ import Mfooter          from '../Mfooter'
 
 const MySwal = withReactContent(Swal)
 
-const ListadoEmpresas  = () => {
+const Listadousuarios  = () => {
 
 ///1.configuramos los hooks
   const [search,setSearch ]=useState([])
   const [empre,setEmpresas ]=useState([])
   const [filtereCountries,setfiltereCountries]=useState([])
 //2. referencia a la bd
-  const  empresaCollection=collection(db,"empresas")
+  const  empresaCollection=collection(db,"Usuarios")
 //3. mostrar todos los documentos
   const getEmpresas=async ()   => {
   const data=await getDocs(empresaCollection)
@@ -36,14 +36,14 @@ const ListadoEmpresas  = () => {
      }//fin del getcategoria
 //4 - Funcion para eliminar un doc
   const deleteempresa = async (id) => {
-   const empresaDoc = doc(db, "empresas", id)
+   const empresaDoc = doc(db, "Usuarios", id)
    await deleteDoc(empresaDoc)
     getEmpresas()
   }	 
     //5 - Funcion de confirmacion para Sweet Alert 2
   const confirmDelete = (id) => {
     MySwal.fire({
-      title: '¿Esta Seguro de Eliminar esta Empresa?',
+      title: '¿Esta Seguro de Eliminar este Usuario?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -65,45 +65,41 @@ const ListadoEmpresas  = () => {
   const columns= [
   
   {
-	name:"Codigo ",
-	selector:(row)=>row.codigo_empresa,
+	name:"Nombre Usuario",
+	selector:(row)=>row.nombre_usuario,
 	sortable:true
 	
   },
   
   {
-	name:"Empresa",
-	selector:(row)=>row.nombre_empresa
+	name:"Clave Usuario",
+	selector:(row)=>row.clave_usuario
+  },
+ 
+  {
+	name:"Correo Electronico",
+	selector:(row)=>row.email
   },
   
   {
-	name:"Correo",
-	selector:(row)=>row.correo_empresa
+	name:"Pregunta_usuario",
+	selector:(row)=>row.pregunta_usuario
   },
   
   {
-	name:"Dirección",
-	selector:(row)=>row.direccion_empresa
+	name:"Repuesta Usuario",
+	selector:(row)=>row.repuesta_usuario
   },
   
-  {
-	name:"Telefono",
-	selector:(row)=>row.telefono_empresa
-  },
   
   {
-	name:"Dni",
-	selector:(row)=>row.dni
-  },
-  
-  {
-	name:"Profesión Empresa",
-	selector:(row)=>row.profecion_empresa
+	name:"Tipo Usuario ",
+	selector:(row)=>row.tipo_usuario 
   },
   
   {
 	name:"Modificar",
-	cell:(row)=><Link to={`/Editempresa/${row.id}`} className="btn btn-light">Editar</Link>
+	cell:(row)=><Link to={`/Editusuarios/${row.id}`} className="btn btn-light">Editar</Link>
   },
    {
 	name:"Eliminar",
@@ -119,7 +115,7 @@ const ListadoEmpresas  = () => {
   
     useEffect( () => {
     const result=empre.filter((country)=>{
-	  return country.nombre_empresa.toLowerCase().match(search.toLowerCase())
+	  return country.nombre_usuario.toLowerCase().match(search.toLowerCase())
 	})
 	setfiltereCountries(result)
     // eslint-disable-next-line
@@ -136,6 +132,7 @@ const ListadoEmpresas  = () => {
 		    <div className="col-lg-12 grid-margin stretch-card">
 			  <div className="card">
 			    <div className="card-body">
+				<h4 className="card-title">Listado de Usuarios</h4>
 				<DataTable 
 				columns={columns} 
 				data={filtereCountries} 
@@ -144,12 +141,12 @@ const ListadoEmpresas  = () => {
 				fixedHeaderScrollHeight="450px"
 				selecttablesRow
 				selecttablesRowHighlight
-				actions={<Link to="/Registrarempresa" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
+				actions={<Link to="/Registrarusuarios" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>    }
 				highlightOnHover
 				subHeader
 				subHeaderComponent={<input 
 				                    type="text" 
-									placeholder="Buscar Empresas ..." 
+									placeholder="Buscar Usuarios ..." 
 									className="w25 form-control" 
 									value={search}
 									onChange={(e)=>setSearch(e.target.value)}/>
@@ -169,4 +166,6 @@ const ListadoEmpresas  = () => {
   )
 }
 
-export default ListadoEmpresas
+export default Listadousuarios
+
+

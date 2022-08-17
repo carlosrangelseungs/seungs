@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../firebaseConfig/conexion_firebase'
 import { uploadFile } from '../../firebaseConfig/conexion_firebase'
-import Mheader    from '../Mheader'
-import Mnav       from '../Mnav'
-import Mfooter    from '../Mfooter'
+import {Link}         from 'react-router-dom'
+import Mheader        from '../Mheader'
+import Mnav           from '../Mnav'
+import Mfooter        from '../Mfooter'
 
 const Registrarcategoria = () => {
   const [ nombre_categoria, setNombrecategoria ] = useState('')
@@ -77,7 +78,8 @@ const Registrarcategoria = () => {
                         />              
                     </div>  
                     <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
-                 </form>   
+                    <Link class="nav-link" to="/ListadoCategoria" className='btn btn-primary mr-2'>Atras</Link>
+				 </form>   
 				</div>
 			  </div>
             </div>

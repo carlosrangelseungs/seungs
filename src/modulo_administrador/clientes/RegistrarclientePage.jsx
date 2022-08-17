@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../../firebaseConfig/conexion_firebase'
+import {Link}     from 'react-router-dom'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
@@ -112,6 +113,7 @@ const Registrarcliente = () => {
                     </div>
 					
                     <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
+					<Link class="nav-link" to="/ListadoClientes" className='btn btn-primary mr-2'>Atras</Link>
                  </form>   
 				</div>
 			  </div>

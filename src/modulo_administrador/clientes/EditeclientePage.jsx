@@ -2,6 +2,7 @@ import { useEffect, useState }    from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getDoc, updateDoc, doc } from "firebase/firestore"
 import {db} from '../../firebaseConfig/conexion_firebase'
+import {Link}     from 'react-router-dom'
 import Mheader    from '../Mheader'
 import Mnav       from '../Mnav'
 import Mfooter    from '../Mfooter'
@@ -132,7 +133,8 @@ import Mfooter    from '../Mfooter'
 						    placeholder="Correo Cliente ..."
                         />              
                     </div>
-                    <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
+                    <button type='submit' className='btn btn-primary mr-2'>Editar {nombre_cliente}</button>
+					<Link class="nav-link" to="/ListadoClientes" className='btn btn-primary mr-2'>Atras</Link>
                  </form>   
 				</div>
 			  </div>
