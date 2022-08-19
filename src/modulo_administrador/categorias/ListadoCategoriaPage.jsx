@@ -76,7 +76,7 @@ let contador=1;
  
   {
 	name:"Modificar",
-	cell:(row)=><Link to={`/Editcategoria/${row.id}`} className="btn btn-light">Editar</Link>
+	cell:(row)=><Link to={`/Moduloadministrador/Editcategoria/${row.id}`} className="btn btn-light">Editar</Link>
   },
    {
 	name:"Eliminar",
@@ -122,7 +122,7 @@ let contador=1;
 							fixedHeaderScrollHeight="450px"
 							selecttablesRow
 							selecttablesRowHighlight
-							actions={<Link to="/Registrarcategoria" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>}
+							actions={<Link to="/Moduloadministrador/Registrarcategoria" className='btn btn-secondary mt-2 mb-2'>Nuevo Registro</Link>}
 							highlightOnHover
 							subHeader
 							subHeaderComponent={<input 

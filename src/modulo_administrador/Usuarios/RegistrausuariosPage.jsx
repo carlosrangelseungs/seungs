@@ -118,7 +118,7 @@ const Registrarusuarios = () => {
 					
 
                    <button type='submit' className='btn btn-primary mr-2'>Guardar</button>
-                   <Link class="nav-link" to="/Listadousuarios" className='btn btn-primary mr-2'>Atras</Link>
+                   <Link class="nav-link" to="/Moduloadministrador/Listadousuarios" className='btn btn-primary mr-2'>Atras</Link>
 				 </form>   
 				</div>
 			  </div>

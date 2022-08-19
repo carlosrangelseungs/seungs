@@ -143,7 +143,7 @@ const Editcategoria = () => {
                         />              
                     </div>
                     <button type='submit' className='btn btn-primary mr-2'>Editar {nombre_empresa} </button>
-					<Link class="nav-link" to="/ListadoEmpresas" className='btn btn-primary mr-2'>Atras</Link>
+					<Link class="nav-link" to="/Moduloadministrador/ListadoEmpresas" className='btn btn-primary mr-2'>Atras</Link>
                  </form>   
 				</div>
 			  </div>

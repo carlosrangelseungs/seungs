@@ -54,38 +54,38 @@ function App() {
     <Router>
     
     <Routes>
-      <Route path="/" element={<Inicio />} />
-      <Route path="/Productos"                  element={<Productos />} />
-      <Route path="/Servicios"                  element={<Servicios />} />
-      <Route path="/Contacto"                   element={<Contacto />} />
-      <Route path="/IniciarSeccion"             element={<IniciarSeccion />} />
-      <Route path="/RegistroUsuario"            element={<RegistroUsuario />} />
-      <Route path="/Moduloadministrador"        element={<Moduloadministrador />} />
-	  <Route path="/ListadoCategoria"           element={<ListadoCategoria />} />
-	  <Route path="/Registrarcategoria"         element={<Registrarcategoria />} />
-	  <Route path="/Editcategoria/:id"          element={<Editcategoria />} />
-	  <Route path="/ListadoEmpresas/"           element={<ListadoEmpresas />} />
-	  <Route path="/Registrarempresa"           element={<Registrarempresa />} />
-	  <Route path="/Editempresa/:id"            element={<Editempresa />} />
-	  <Route path="/ListadoClientes/"           element={<ListadoClientes />} />
-	  <Route path="/Registrarcliente"           element={<Registrarcliente />} />
-	  <Route path="/Editecliente/:id"           element={<Editecliente />} />
-	  <Route path="/Listadoplanes/"             element={<Listadoplanes  />} />
-	  <Route path="/Registrarplanes"            element={<Registrarplanes />} />
-	  <Route path="/Editplanes/:id"             element={<Editplanes />} />
-	  <Route path="/ListadoProducto/"           element={<ListadoProducto  />} />
-	  <Route path="/RegistraProducto"           element={<RegistraProducto />} />
-	  <Route path="/EditcProducto/:id"          element={<EditcProducto />} />
-	  <Route path="/ListadoRepartidores/"       element={<ListadoRepartidores />} />
-	  <Route path="/RegistrarRepartidores"      element={<RegistrarRepartidores />} />
-	  <Route path="/EditRepartidores/:id"       element={<EditRepartidores />} />
-	  <Route path="/ListadoPedidos/"            element={<ListadoPedidos />} />
-      <Route path="/Registrarpedidos"           element={<Registrarpedidos />} />
-	  <Route path="/Editpedidos/:id"            element={<Editpedidos />} />
-	  <Route path="/Listadousuarios/"           element={<Listadousuarios />} />
-      <Route path="/Registrarusuarios"          element={<Registrarusuarios />} />
-	  <Route path="/Editusuarios/:id"           element={<Editusuarios />} />
-	  <Route path="*"                           element={<NotFoundPage />} />
+      <Route path="/"                                               element={<Inicio />} />
+      <Route path="/Productos"                                      element={<Productos />} />
+      <Route path="/Servicios"                                      element={<Servicios />} />
+      <Route path="/Contacto"                                       element={<Contacto />} />
+      <Route path="/IniciarSeccion"                                 element={<IniciarSeccion />} />
+      <Route path="/RegistroUsuario"                                element={<RegistroUsuario />} />
+      <Route path="/Moduloadministrador"                            element={<Moduloadministrador />} />
+	  <Route path="/Moduloadministrador/ListadoCategoria"           element={<ListadoCategoria />} />
+	  <Route path="/Moduloadministrador/Registrarcategoria"         element={<Registrarcategoria />} />
+	  <Route path="/Moduloadministrador/Editcategoria/:id"          element={<Editcategoria />} />
+	  <Route path="/Moduloadministrador/ListadoEmpresas"            element={<ListadoEmpresas />} />
+	  <Route path="/Moduloadministrador/Registrarempresa"           element={<Registrarempresa />} />
+	  <Route path="/Moduloadministrador/Editempresa/:id"            element={<Editempresa />} />
+	  <Route path="/Moduloadministrador/ListadoClientes/"           element={<ListadoClientes />} />
+	  <Route path="/Moduloadministrador/Registrarcliente"           element={<Registrarcliente />} />
+	  <Route path="/Moduloadministrador/Editecliente/:id"           element={<Editecliente />} />
+	  <Route path="/Moduloadministrador/Listadoplanes/"             element={<Listadoplanes  />} />
+	  <Route path="/Moduloadministrador/Registrarplanes"            element={<Registrarplanes />} />
+	  <Route path="/Moduloadministrador/Editplanes/:id"             element={<Editplanes />} />
+	  <Route path="/Moduloadministrador/ListadoProducto"            element={<ListadoProducto  />} />
+	  <Route path="/Moduloadministrador/RegistraProducto"           element={<RegistraProducto />} />
+	  <Route path="/Moduloadministrador/EditcProducto/:id"          element={<EditcProducto />} />
+	  <Route path="/Moduloadministrador/ListadoRepartidores/"       element={<ListadoRepartidores />} />
+	  <Route path="/Moduloadministrador/RegistrarRepartidores"      element={<RegistrarRepartidores />} />
+	  <Route path="/Moduloadministrador/EditRepartidores/:id"       element={<EditRepartidores />} />
+	  <Route path="/Moduloadministrador/ListadoPedidos/"            element={<ListadoPedidos />} />
+      <Route path="/Moduloadministrador/Registrarpedidos"           element={<Registrarpedidos />} />
+	  <Route path="/Moduloadministrador/Editpedidos/:id"            element={<Editpedidos />} />
+	  <Route path="/Moduloadministrador/Listadousuarios/"           element={<Listadousuarios />} />
+      <Route path="/Moduloadministrador/Registrarusuarios"          element={<Registrarusuarios />} />
+	  <Route path="/Moduloadministrador/Editusuarios/:id"           element={<Editusuarios />} />
+	  <Route path="*"                                               element={<NotFoundPage />} />
     </Routes>
   </Router>
        

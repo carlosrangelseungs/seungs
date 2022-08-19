@@ -16,56 +16,56 @@ const Mnav = () => {
 	  
     <ul class="nav">
       <li class="nav-item">
-        <Link class="nav-link" to="/ListadoCategoria">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoCategoria">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Categorias</span>
         </Link>
       </li>
       
 	   <li class="nav-item">
-        <Link class="nav-link" to="/ListadoEmpresas">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoEmpresas">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Empresas</span>
         </Link>
       </li>
 	  
 	  <li class="nav-item">
-        <Link class="nav-link" to="/ListadoClientes">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoClientes">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Clientes</span>
         </Link>
       </li>
 	  
 	   <li class="nav-item">
-        <Link class="nav-link" to="/Listadoplanes">
+        <Link class="nav-link" to="/Moduloadministrador/Listadoplanes">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Planes</span>
         </Link>
       </li>
 	  
 	    <li class="nav-item">
-        <Link class="nav-link" to="/ListadoProducto">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoProducto">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Productos</span>
         </Link>
       </li>
 	  
 	  <li class="nav-item">
-        <Link class="nav-link" to="/ListadoRepartidores">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoRepartidores">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Repartidores</span>
         </Link>
       </li>
 	  
 	    <li class="nav-item">
-        <Link class="nav-link" to="/ListadoPedidos">
+        <Link class="nav-link" to="/Moduloadministrador/ListadoPedidos">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Pedidos</span>
         </Link>
       </li>
 	  
 	   <li class="nav-item">
-        <Link class="nav-link" to="/Listadousuarios">
+        <Link class="nav-link" to="/Moduloadministrador/Listadousuarios">
           <i class="icon-box menu-icon"></i>
           <span class="menu-title">Modulo Usuarios</span>
         </Link>

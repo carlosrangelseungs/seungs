@@ -1,4 +1,4 @@
-
+import {Link}     from 'react-router-dom'
 
 const Mheader= () => {
   return (
@@ -6,7 +6,7 @@ const Mheader= () => {
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
       <img src="images/logo.svg" alt="logo"/>
-      <img src="images/logo-mini.svg" alt="logo"/>
+      <Link to="/Moduloadministrador"><img src="images/logo-mini.svg" alt="logo"/></Link>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

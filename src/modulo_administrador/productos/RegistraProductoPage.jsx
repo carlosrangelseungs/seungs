@@ -108,7 +108,7 @@ const RegistraProducto = () => {
                     </div> 
 					
 				<button type='submit' className='btn btn-primary mr-2'>Guardar</button>
-                <Link class="nav-link" to="/ListadoProducto" className='btn btn-primary mr-2'>Atras</Link>
+                <Link class="nav-link" to="/Moduloadministrador/ListadoProducto" className='btn btn-primary mr-2'>Atras</Link>
 				 </form>   
 				</div>
 			  </div>

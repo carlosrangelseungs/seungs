@@ -84,7 +84,7 @@ const Editcategoria = () => {
                         />              
                     </div>   
                     <button type='submit' className='btn btn-primary mr-2'>Editar {nombre_plan}</button>
-                    <Link class="nav-link" to="/Listadoplanes" className='btn btn-primary mr-2'>Atras</Link>
+                    <Link class="nav-link" to="/Moduloadministrador/Listadoplanes" className='btn btn-primary mr-2'>Atras</Link>
 				 </form>   
 				</div>
 			  </div>
